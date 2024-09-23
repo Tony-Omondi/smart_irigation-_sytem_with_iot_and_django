@@ -1,0 +1,73 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Landing Page | Smart Irrigation System{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Smart Irrigation System</h1>
+    <nav>
+        <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="hero">
+    <h2>Optimize Your Farm's Water Usage</h2>
+    <a href="#features" class="cta-button">Get Started</a>
+</section>
+
+<section id="features">
+    <h2>Features</h2>
+    <div class="feature-cards">
+        <div class="card">
+            <img src="{% static 'images/monitoring.jpg' %}" alt="Real-time Monitoring">
+            <h3>Real-time Monitoring</h3>
+            <p>Keep track of soil moisture levels.</p>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/automation.jpg' %}" alt="Automated Irrigation">
+            <h3>Automated Irrigation</h3>
+            <p>Schedule watering times to save water.</p>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/analytics.jpg' %}" alt="Data Analytics">
+            <h3>Data Analytics</h3>
+            <p>Analyze irrigation data for better decision-making.</p>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/remote.jpg' %}" alt="Remote Control">
+            <h3>Remote Control</h3>
+            <p>Control your irrigation system from your smartphone.</p>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <h2>About Us</h2>
+    <p>We are dedicated to helping farmers optimize their water usage and increase crop yields through innovative technology.</p>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2024 Smart Irrigation System. All rights reserved.</p>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+</footer>
+{% endblock %}
