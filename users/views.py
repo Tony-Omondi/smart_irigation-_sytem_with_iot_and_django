@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import ListView
+from django.shortcuts import render, redirect
+from django.contrib import messages
+import pyrebase
+from .forms import LoginForm, SignupForm
+from django.conf import settings
 
 
 
@@ -10,11 +15,7 @@ def index(request):
 
 
 # views.py
-from django.shortcuts import render, redirect
-from django.contrib import messages
-import pyrebase
-from .forms import LoginForm, SignupForm
-from django.conf import settings
+
 
 firebase = pyrebase.initialize_app(settings.FIREBASE_CONFIG)
 auth = firebase.auth()

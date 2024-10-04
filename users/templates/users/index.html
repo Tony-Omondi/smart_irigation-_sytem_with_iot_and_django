@@ -4,70 +4,105 @@
 {% block title %}Landing Page | Smart Irrigation System{% endblock %}
 
 {% block content %}
-<header>
-    <h1>Smart Irrigation System</h1>
-    <nav>
-        <ul>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-
-<section id="hero">
-    <h2>Optimize Your Farm's Water Usage</h2>
-    <a href="#features" class="cta-button">Get Started</a>
-</section>
-
-<section id="features">
-    <h2>Features</h2>
-    <div class="feature-cards">
-        <div class="card">
-            <img src="{% static 'images/monitoring.jpg' %}" alt="Real-time Monitoring">
-            <h3>Real-time Monitoring</h3>
-            <p>Keep track of soil moisture levels.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housure - Smart Irrigation Solutions</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="{% static 'js/scripts.js' %}" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Housure</h1>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Mission</a></li>
+                <li><a href="#">Vision</a></li>
+                <li><a href="#">Grids</a></li>
+                <li><a href="{% url 'signup' %}" class="signup-button">Signup</a></li>
+                <li><a href="#" class="lend-button">Lend Us</a></li>
+            </ul>
+        </nav>
+        <div class="header-content">
+            <h2>The Most Innovative Smart Irrigation Solutions.</h2>
+            <div class="buttons">
+                <button class="continue-button">Continue</button>
+                <button class="sign-button">Sign Up</button>
+            </div>
         </div>
-        <div class="card">
-            <img src="{% static 'images/automation.jpg' %}" alt="Automated Irrigation">
-            <h3>Automated Irrigation</h3>
-            <p>Schedule watering times to save water.</p>
-        </div>
-        <div class="card">
-            <img src="{% static 'images/analytics.jpg' %}" alt="Data Analytics">
-            <h3>Data Analytics</h3>
-            <p>Analyze irrigation data for better decision-making.</p>
-        </div>
-        <div class="card">
-            <img src="{% static 'images/remote.jpg' %}" alt="Remote Control">
-            <h3>Remote Control</h3>
-            <p>Control your irrigation system from your smartphone.</p>
-        </div>
-    </div>
-</section>
+    </header>
+    <main>
+        <section class="about-us">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>We focus on providing innovative smart irrigation solutions to enhance efficiency in agricultural practices.</p>
+                <div class="mission-vision">
+                    <div class="item">
+                        <i class="fas fa-bullseye"></i> 
+                        <h3>Mission</h3>
+                        <p>To empower farmers with cutting-edge technology for sustainable agriculture.</p>
+                    </div>
+                    <div class="item">
+                        <i class="fab fa-twitter"></i> 
+                        <h3>Vision</h3>
+                        <p>To become a leader in providing technology solutions that transform farming practices.</p>
+                    </div>
+                    <div class="item">
+                        <i class="fas fa-eye"></i> 
+                        <h3>Values</h3>
+                        <p>Integrity, Innovation, and Sustainability are at the core of our operations.</p>
+                    </div>
+                    <div class="item">
+                        <i class="fas fa-broadcast-tower"></i> 
+                        <h3>Impact</h3>
+                        <p>To create a sustainable environment through effective resource management.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section id="about">
-    <h2>About Us</h2>
-    <p>We are dedicated to helping farmers optimize their water usage and increase crop yields through innovative technology.</p>
-</section>
+        <section class="team">
+            <div class="container">
+                <h2>Meet the Team</h2>
+                <div class="team-members">
+                    <div class="member">
+                        <img src="team-member-1.jpg" alt="Team Member 1"> 
+                        <h3>Ura Aleffec</h3>
+                        <p>Chief Executive Officer</p>
+                    </div>
+                    <div class="member">
+                        <img src="team-member-2.jpg" alt="Team Member 2"> 
+                        <h3>Fon Dronand</h3>
+                        <p>Chief Technology Officer</p>
+                    </div>
+                    <div class="member">
+                        <img src="team-member-3.jpg" alt="Team Member 3"> 
+                        <h3>Rerne Wiatrifer</h3>
+                        <p>Product Manager</p>
+                    </div>
+                    <div class="member">
+                        <img src="team-member-4.jpg" alt="Team Member 4"> 
+                        <h3>Graet Inindling</h3>
+                        <p>Marketing Head</p>
+                    </div>
+                    <div class="member">
+                        <img src="team-member-5.jpg" alt="Team Member 5"> 
+                        <h3>Carelly Sharmon</h3>
+                        <p>Financial Officer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-<section id="contact">
-    <h2>Contact Us</h2>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <textarea name="message" placeholder="Message" required></textarea>
-        <button type="submit">Send Message</button>
-    </form>
-</section>
+    <footer>
+        <p>&copy; 2024 Housure. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
 
-<footer>
-    <p>&copy; 2024 Smart Irrigation System. All rights reserved.</p>
-    <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-    </div>
-</footer>
 {% endblock %}
