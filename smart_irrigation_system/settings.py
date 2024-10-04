@@ -9,27 +9,37 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+# settings.py
+FIREBASE_CONFIG = {
+    'apiKey': "AIzaSyBJkogXpsVo0JtTEqJ96E2YMmcnnqqd64w",
+    'authDomain': "pythonauthproject-e4b39.firebaseapp.com",
+    'databaseURL': "https://pythonauthproject-e4b39-default-rtdb.firebaseio.com",
+    'projectId': "pythonauthproject-e4b39",
+    'storageBucket': "pythonauthproject-e4b39.appspot.com",
+    'messagingSenderId': "591570787340",
+    'appId': "1:591570787340:web:f3e7b072ad3683c4656229",
+    'measurementId': "G-PCM9GL6M0V"
+}
+
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Load environment variables from .env file
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
+env_path = load_dotenv(os.path.join(BASE_DIR, '.env'))
+load_dotenv(env_path)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@q_s^_nawk^euo@02v8mdks&gif*4twfajp4@py8x5j(q=4pii'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-@q_s^_nawk^euo@02v8mdks&gif*4twfajp4@py8x5j(q=4pii')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users',
+    'users',  # Custom user app for authentication
 ]
 
 MIDDLEWARE = [
@@ -70,21 +80,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'smart_irrigation_system.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
+# Database configuration
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'myproject',
+        'USER': 'root',
+        'PASSWORD': 'frizel1256',  # Ensure this password is stored securely
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
-
 # Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -100,32 +108,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'  # This defines the URL path for static files
-
-# Directory where Django will look for static files in each app
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "static",  # Ensure you have a static folder at the root of your project
+    BASE_DIR / "static",  # Ensure the existence of a 'static' folder
 ]
 
-
 # Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
